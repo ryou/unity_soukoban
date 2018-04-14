@@ -22,4 +22,9 @@ public class Panel : MonoBehaviour {
         this.position = inPosition;
         this.transform.Translate(inPosition.x, 0, inPosition.y);
     }
+
+    public Position GetPosition()
+    {
+        return this.position;
+    }
 }

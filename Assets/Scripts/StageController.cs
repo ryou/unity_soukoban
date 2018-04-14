@@ -17,8 +17,6 @@ public class StageController : MonoBehaviour {
     public List<Vector2> panelPositions;
     public List<Vector2> wallPositions;
 
-    private Cell[,] cells = new Cell[11, 11];
-
     private State currentState = State.wait;
     private Player player;
     private List<BaseObject> objects = new List<BaseObject>();
@@ -125,7 +123,18 @@ public class StageController : MonoBehaviour {
         }
         else if (this.currentState == State.move)
         {
-            if (!this.player.IsMoving()) this.currentState = State.wait;
+            if (!this.player.IsMoving())
+            {
+                if (IsStageClear())
+                {
+                    Debug.Log("clear");
+                    this.currentState = State.clear;
+                }
+                else
+                {
+                    this.currentState = State.wait;
+                }
+            }
         }
 	}
 
@@ -203,6 +212,16 @@ public class StageController : MonoBehaviour {
         return this.objects.Find(item => {
             var position = item.GetPosition();
             return (position.x == inPosition.x) && (position.y == inPosition.y);
+        });
+    }
+
+    bool IsStageClear()
+    {
+        return this.panels.TrueForAll(panel => {
+            var objectOnPanel = SearchObject(panel.GetPosition());
+            if (objectOnPanel != null && objectOnPanel is Block) return true;
+
+            return false;
         });
     }
 }
