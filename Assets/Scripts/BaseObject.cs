@@ -87,6 +87,11 @@ public class BaseObject : MonoBehaviour {
 
     }
 
+    public Position GetPosition()
+    {
+        return this.position;
+    }
+
     public void SetPosition(Position inPosition)
     {
         this.position = inPosition;

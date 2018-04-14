@@ -96,6 +96,13 @@ public class StageController : MonoBehaviour {
 
     void UpdateArounds(BaseObject inObject)
     {
+    }
 
+    BaseObject SearchObject(Position inPosition)
+    {
+        return this.objects.Find(item => {
+            var position = item.GetPosition();
+            return (position.x == inPosition.x) && (position.y == inPosition.y);
+        });
     }
 }
