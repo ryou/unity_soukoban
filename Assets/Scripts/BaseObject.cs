@@ -42,7 +42,7 @@ public class BaseObject : MonoBehaviour {
         }
 	}
 
-    public void Move(Direction inDirection)
+    public virtual void Move(Direction inDirection)
     {
         var translate = new Position();
 
