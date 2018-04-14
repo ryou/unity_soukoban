@@ -56,6 +56,10 @@ public class StageController : MonoBehaviour {
                 {
                     this.player.Move(keyDirection);
                     this.currentState = State.move;
+
+                    this.objects.ForEach(item => {
+                        UpdateArounds(item);
+                    });
                 }
             }
         }
@@ -92,6 +96,39 @@ public class StageController : MonoBehaviour {
 
     void UpdateArounds(BaseObject inObject)
     {
+        var position = inObject.GetPosition();
+        var around = new Dictionary<Direction, BaseObject>();
+
+        // TODO: 以下、かなり雑な実装なので整理すること
+        // up
+        {
+            var targetPosition = new Position(position.x, position.y + 1);
+            var obj = SearchObject(targetPosition);
+            around.Add(Direction.up, obj);
+        }
+
+        // right
+        {
+            var targetPosition = new Position(position.x + 1, position.y);
+            var obj = SearchObject(targetPosition);
+            around.Add(Direction.right, obj);
+        }
+        
+        // down
+        {
+            var targetPosition = new Position(position.x, position.y - 1);
+            var obj = SearchObject(targetPosition);
+            around.Add(Direction.down, obj);
+        }
+        
+        // left
+        {
+            var targetPosition = new Position(position.x - 1, position.y);
+            var obj = SearchObject(targetPosition);
+            around.Add(Direction.left, obj);
+        }
+
+        inObject.SetAround(around);
     }
 
     BaseObject SearchObject(Position inPosition)

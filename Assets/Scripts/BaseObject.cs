@@ -12,7 +12,7 @@ public class BaseObject : MonoBehaviour {
     }
 
     private Position position;
-    private Cell[] around = new Cell[4];
+    private Dictionary<Direction, BaseObject> around;
 
     private State currentState = State.idle;
     private Vector3 movePosition;
@@ -80,7 +80,7 @@ public class BaseObject : MonoBehaviour {
         return this.currentState == State.move;
     }
 
-    public void SetAround(BaseObject[] inAround)
+    public void SetAround(Dictionary<Direction, BaseObject> inAround)
     {
 
     }
