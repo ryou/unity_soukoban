@@ -22,17 +22,18 @@ public class StageController : MonoBehaviour {
     private State currentState = State.wait;
     private Player player;
     private List<BaseObject> objects = new List<BaseObject>();
-    private List<GameObject> panels = new List<GameObject>();
+    private List<Panel> panels = new List<Panel>();
 
 	// Use this for initialization
 	void Start () {
         // load panels
         var panelTemplate = (GameObject)Resources.Load("Prefabs/Panel");
         this.panelPositions.ForEach(panelPosition => {
-            var panel = Instantiate(panelTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
+            var panelObject = Instantiate(panelTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
             // TODO: ここらへんのVector2からPositionに変換する処理、なんとかならんか
             var tmpPosition = new Position((int)panelPosition.x, (int)panelPosition.y);
-            panel.GetComponent<Panel>().SetPosition(tmpPosition);
+            var panel = panelObject.GetComponent<Panel>();
+            panel.SetPosition(tmpPosition);
             this.panels.Add(panel);
         });
 
