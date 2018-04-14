@@ -17,7 +17,7 @@ public class BaseObject : MonoBehaviour {
     private State currentState = State.idle;
     private Vector3 movePosition;
 
-    private float speed = 4.0f;
+    private float speed = 3.0f;
 
 	// Use this for initialization
 	void Start () {
