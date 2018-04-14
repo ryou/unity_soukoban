@@ -63,6 +63,44 @@ public class StageController : MonoBehaviour {
             wall.SetPosition(tmpPosition);
             this.objects.Add(wall);
         });
+        // 外壁を配置
+        // TODO: 整理する
+        for (var i = 0; i < 11; i++)
+        {
+            var wallPosition = new Position(i, 0);
+            var wallObject = Instantiate(wallTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
+            var tmpPosition = new Position((int)wallPosition.x, (int)wallPosition.y);
+            var wall = wallObject.GetComponent<Wall>();
+            wall.SetPosition(tmpPosition);
+            this.objects.Add(wall);
+        }
+        for (var i = 0; i < 11; i++)
+        {
+            var wallPosition = new Position(i, 10);
+            var wallObject = Instantiate(wallTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
+            var tmpPosition = new Position((int)wallPosition.x, (int)wallPosition.y);
+            var wall = wallObject.GetComponent<Wall>();
+            wall.SetPosition(tmpPosition);
+            this.objects.Add(wall);
+        }
+        for (var i = 1; i < 10; i++)
+        {
+            var wallPosition = new Position(0, i);
+            var wallObject = Instantiate(wallTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
+            var tmpPosition = new Position((int)wallPosition.x, (int)wallPosition.y);
+            var wall = wallObject.GetComponent<Wall>();
+            wall.SetPosition(tmpPosition);
+            this.objects.Add(wall);
+        }
+        for (var i = 1; i < 10; i++)
+        {
+            var wallPosition = new Position(10, i);
+            var wallObject = Instantiate(wallTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
+            var tmpPosition = new Position((int)wallPosition.x, (int)wallPosition.y);
+            var wall = wallObject.GetComponent<Wall>();
+            wall.SetPosition(tmpPosition);
+            this.objects.Add(wall);
+        }
 
         UpdateArounds();
     }
