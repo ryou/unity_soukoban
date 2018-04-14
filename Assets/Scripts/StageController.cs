@@ -19,21 +19,33 @@ public class StageController : MonoBehaviour {
     private Cell[,] cells = new Cell[11, 11];
 
     private State currentState = State.wait;
-    private GameObject player;
+    private Player player;
+    private List<BaseObject> objects = new List<BaseObject>();
     private List<GameObject> panels = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () {
-        var panelObject = (GameObject)Resources.Load("Prefabs/Panel");
+        // load panels
+        var panelTemplate = (GameObject)Resources.Load("Prefabs/Panel");
         this.panelPositions.ForEach(panelPosition => {
-            var panel = Instantiate(panelObject, Vector3.zero, new Quaternion(0, 0, 0, 0));
-            panel.GetComponent<Panel>().SetPosition(panelPosition);
+            var panel = Instantiate(panelTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
+            // TODO: ここらへんのVector2からPositionに変換する処理、なんとかならんか
+            Position tmpPosition;
+            tmpPosition.x = (int)panelPosition.x;
+            tmpPosition.y = (int)panelPosition.y;
+            panel.GetComponent<Panel>().SetPosition(tmpPosition);
             this.panels.Add(panel);
         });
 
-        var playerObject = (GameObject)Resources.Load("Prefabs/Player");
-        this.player = Instantiate(playerObject, Vector3.zero, new Quaternion(0, 0, 0, 0));
-        this.player.GetComponent<Player>().SetPosition(playerPosition);
+        // load player
+        var playerTemplate = (GameObject)Resources.Load("Prefabs/Player");
+        var playerObject = Instantiate(playerTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
+        this.player = playerObject.GetComponent<Player>();
+        Position position;
+        position.x = (int)playerPosition.x;
+        position.y = (int)playerPosition.y;
+        this.player.SetPosition(position);
+        this.objects.Add(this.player);
 	}
 	
 	// Update is called once per frame
@@ -44,16 +56,16 @@ public class StageController : MonoBehaviour {
 
             if (keyDirection != Direction.none)
             {
-                if (player.GetComponent<Player>().CanMove(keyDirection))
+                if (this.player.CanMove(keyDirection))
                 {
-                    player.GetComponent<Player>().Move(keyDirection);
+                    this.player.Move(keyDirection);
                     this.currentState = State.move;
                 }
             }
         }
         else if (this.currentState == State.move)
         {
-            if (!player.GetComponent<Player>().IsMoving()) this.currentState = State.wait;
+            if (!this.player.IsMoving()) this.currentState = State.wait;
         }
 	}
 

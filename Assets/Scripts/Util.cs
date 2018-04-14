@@ -12,4 +12,10 @@ namespace Util
         down,
         left
     }
+
+    public struct Position
+    {
+        public int x;
+        public int y;
+    }
 }

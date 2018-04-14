@@ -11,7 +11,7 @@ public class BaseObject : MonoBehaviour {
         move,
     }
 
-    private Vector2 position;
+    private Position position;
     private Cell[] around = new Cell[4];
 
     private State currentState = State.idle;
@@ -44,27 +44,30 @@ public class BaseObject : MonoBehaviour {
 
     public void Move(Direction inDirection)
     {
-        Vector2 translate;
+        Position translate;
+        translate.x = 0;
+        translate.y = 0;
 
         switch(inDirection)
         {
             case Direction.up:
-                translate = new Vector2(0, 1);
+                translate.y = 1;
                 break;
             case Direction.right:
-                translate = new Vector2(1, 0);
+                translate.x = 1;
                 break;
             case Direction.down:
-                translate = new Vector2(0, -1);
+                translate.y = -1;
                 break;
             case Direction.left:
-                translate = new Vector2(-1, 0);
+                translate.x = -1;
                 break;
             default:
                 throw new System.Exception("Invalid Direction");
         }
-        
-        this.position += translate;
+
+        this.position.x += translate.x;
+        this.position.y += translate.y;
         this.movePosition = new Vector3(this.position.x, 0, this.position.y);
         this.currentState = State.move;
     }
@@ -84,7 +87,7 @@ public class BaseObject : MonoBehaviour {
 
     }
 
-    public void SetPosition(Vector2 inPosition)
+    public void SetPosition(Position inPosition)
     {
         this.position = inPosition;
         this.transform.Translate(inPosition.x, 0, inPosition.y);
