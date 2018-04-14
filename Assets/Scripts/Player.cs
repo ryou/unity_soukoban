@@ -6,6 +6,11 @@ using Util;
 public class Player : BaseObject {
     public override bool CanMove(Direction inDirection)
     {
-        return true;
+        BaseObject targetObject = new BaseObject();
+        if (!this.around.TryGetValue(inDirection, out targetObject)) throw new System.Exception("Can't find key.");
+
+        if (targetObject == null) return true;
+
+        return false;
     }
 }

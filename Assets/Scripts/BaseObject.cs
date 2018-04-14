@@ -12,7 +12,7 @@ public class BaseObject : MonoBehaviour {
     }
 
     private Position position;
-    private Dictionary<Direction, BaseObject> around;
+    protected Dictionary<Direction, BaseObject> around;
 
     private State currentState = State.idle;
     private Vector3 movePosition;

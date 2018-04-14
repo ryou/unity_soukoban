@@ -52,7 +52,9 @@ public class StageController : MonoBehaviour {
             block.SetPosition(tmpPosition);
             this.objects.Add(block);
         });
-	}
+
+        UpdateArounds();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -67,9 +69,7 @@ public class StageController : MonoBehaviour {
                     this.player.Move(keyDirection);
                     this.currentState = State.move;
 
-                    this.objects.ForEach(item => {
-                        UpdateArounds(item);
-                    });
+                    UpdateArounds();
                 }
             }
         }
@@ -104,7 +104,14 @@ public class StageController : MonoBehaviour {
         return Direction.none;
     }
 
-    void UpdateArounds(BaseObject inObject)
+    void UpdateArounds()
+    {
+        this.objects.ForEach(item => {
+            UpdateAround(item);
+        });
+    }
+
+    void UpdateAround(BaseObject inObject)
     {
         var position = inObject.GetPosition();
         var around = new Dictionary<Direction, BaseObject>();
