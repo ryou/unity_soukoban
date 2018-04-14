@@ -328,12 +328,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23552bf9d4530fa4b800b9e57c16084e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPosition: {x: 0, y: 0}
+  playerPosition: {x: 2, y: 3}
   blockPositions:
   - {x: 4, y: 4}
   panelPositions:
   - {x: 0, y: 0}
   - {x: 2, y: 2}
+  wallPositions:
+  - {x: 1, y: 1}
+  - {x: 7, y: 7}
 --- !u!1 &2091981049
 GameObject:
   m_ObjectHideFlags: 0

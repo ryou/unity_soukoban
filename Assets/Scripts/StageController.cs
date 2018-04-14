@@ -15,6 +15,7 @@ public class StageController : MonoBehaviour {
     public Vector2 playerPosition;
     public List<Vector2> blockPositions;
     public List<Vector2> panelPositions;
+    public List<Vector2> wallPositions;
 
     private Cell[,] cells = new Cell[11, 11];
 
@@ -51,6 +52,16 @@ public class StageController : MonoBehaviour {
             var block = blockObject.GetComponent<Block>();
             block.SetPosition(tmpPosition);
             this.objects.Add(block);
+        });
+
+        // load walls
+        var wallTemplate = (GameObject)Resources.Load("Prefabs/Wall");
+        this.wallPositions.ForEach(wallPosition => {
+            var wallObject = Instantiate(wallTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
+            var tmpPosition = new Position((int)wallPosition.x, (int)wallPosition.y);
+            var wall = wallObject.GetComponent<Wall>();
+            wall.SetPosition(tmpPosition);
+            this.objects.Add(wall);
         });
 
         UpdateArounds();
