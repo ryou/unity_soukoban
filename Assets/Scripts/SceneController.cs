@@ -14,7 +14,7 @@ public class SceneController : MonoBehaviour {
         SceneManager.LoadScene("StageSelect");
     }
 
-    public void ToStage()
+    public void ToStage(string stageName)
     {
         SceneManager.LoadScene("Stage_01");
     }
