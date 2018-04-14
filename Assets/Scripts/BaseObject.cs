@@ -19,12 +19,6 @@ public class BaseObject : MonoBehaviour {
 
     private float speed = 3.0f;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
 	void Update () {
 		if (this.currentState == State.move)
         {
@@ -37,7 +31,7 @@ public class BaseObject : MonoBehaviour {
             else
             {
                 this.transform.position = this.movePosition;
-                this.currentState = State.idle;
+                OnEndMove();
             }
         }
 	}
@@ -94,5 +88,10 @@ public class BaseObject : MonoBehaviour {
     {
         this.position = inPosition;
         this.transform.Translate(inPosition.x, 0, inPosition.y);
+    }
+
+    protected virtual void OnEndMove()
+    {
+        this.currentState = State.idle;
     }
 }

@@ -28,5 +28,28 @@ namespace Util
             this.x = inX;
             this.y = inY;
         }
+
+        public static Position DirectionToPosition(Direction inDirection)
+        {
+            var position = new Position(0, 0);
+
+            switch(inDirection)
+            {
+                case Direction.up:
+                    position.y++;
+                    break;
+                case Direction.right:
+                    position.x++;
+                    break;
+                case Direction.down:
+                    position.y--;
+                    break;
+                case Direction.left:
+                    position.x--;
+                    break;
+            }
+
+            return position;
+        }
     }
 }
