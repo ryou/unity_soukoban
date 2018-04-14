@@ -127,8 +127,9 @@ public class StageController : MonoBehaviour {
             {
                 if (IsStageClear())
                 {
-                    Debug.Log("clear");
                     this.currentState = State.clear;
+
+                    GameObject.Find("UI").GetComponent<Canvas>().enabled = true;
                 }
                 else
                 {
