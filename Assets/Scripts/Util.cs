@@ -13,9 +13,20 @@ namespace Util
         left
     }
 
-    public struct Position
+    public class Position
     {
-        public int x;
-        public int y;
+        public int x = 0;
+        public int y = 0;
+
+        public Position()
+        {
+
+        }
+
+        public Position(int inX, int inY)
+        {
+            this.x = inX;
+            this.y = inY;
+        }
     }
 }

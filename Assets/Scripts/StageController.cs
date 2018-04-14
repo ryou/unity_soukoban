@@ -30,9 +30,7 @@ public class StageController : MonoBehaviour {
         this.panelPositions.ForEach(panelPosition => {
             var panel = Instantiate(panelTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
             // TODO: ここらへんのVector2からPositionに変換する処理、なんとかならんか
-            Position tmpPosition;
-            tmpPosition.x = (int)panelPosition.x;
-            tmpPosition.y = (int)panelPosition.y;
+            var tmpPosition = new Position((int)panelPosition.x, (int)panelPosition.y);
             panel.GetComponent<Panel>().SetPosition(tmpPosition);
             this.panels.Add(panel);
         });
@@ -41,9 +39,7 @@ public class StageController : MonoBehaviour {
         var playerTemplate = (GameObject)Resources.Load("Prefabs/Player");
         var playerObject = Instantiate(playerTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
         this.player = playerObject.GetComponent<Player>();
-        Position position;
-        position.x = (int)playerPosition.x;
-        position.y = (int)playerPosition.y;
+        var position = new Position((int)playerPosition.x, (int)playerPosition.y);
         this.player.SetPosition(position);
         this.objects.Add(this.player);
 	}

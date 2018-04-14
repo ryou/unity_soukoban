@@ -44,9 +44,7 @@ public class BaseObject : MonoBehaviour {
 
     public void Move(Direction inDirection)
     {
-        Position translate;
-        translate.x = 0;
-        translate.y = 0;
+        var translate = new Position();
 
         switch(inDirection)
         {
