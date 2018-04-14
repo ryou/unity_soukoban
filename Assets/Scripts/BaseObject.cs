@@ -82,7 +82,7 @@ public class BaseObject : MonoBehaviour {
 
     public void SetAround(Dictionary<Direction, BaseObject> inAround)
     {
-
+        this.around = inAround;
     }
 
     public Position GetPosition()

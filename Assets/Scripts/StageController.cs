@@ -42,6 +42,16 @@ public class StageController : MonoBehaviour {
         var position = new Position((int)playerPosition.x, (int)playerPosition.y);
         this.player.SetPosition(position);
         this.objects.Add(this.player);
+
+        // load blocks
+        var blockTemplate = (GameObject)Resources.Load("Prefabs/Block");
+        this.blockPositions.ForEach(blockPosition => {
+            var blockObject = Instantiate(blockTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
+            var tmpPosition = new Position((int)blockPosition.x, (int)blockPosition.y);
+            var block = blockObject.GetComponent<Block>();
+            block.SetPosition(tmpPosition);
+            this.objects.Add(block);
+        });
 	}
 	
 	// Update is called once per frame
