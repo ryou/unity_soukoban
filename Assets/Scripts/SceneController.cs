@@ -19,6 +19,12 @@ public class SceneController : MonoBehaviour {
         SceneManager.LoadScene(inStageName);
     }
 
+    public void ToSameScene()
+    {
+        var sceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(sceneName);
+    }
+
     public void GameEnd()
     {
 #if UNITY_EDITOR

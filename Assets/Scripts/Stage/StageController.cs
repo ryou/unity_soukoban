@@ -22,8 +22,15 @@ public class StageController : MonoBehaviour {
     private List<BaseObject> objects = new List<BaseObject>();
     private List<Panel> panels = new List<Panel>();
 
+    private GameObject showOnClear;
+    private GameObject hideOnClear;
+
 	// Use this for initialization
 	void Start () {
+        this.showOnClear = GameObject.Find("ShowOnClear");
+        this.hideOnClear = GameObject.Find("HideOnClear");
+        this.showOnClear.SetActive(false);
+
         // load panels
         var panelTemplate = (GameObject)Resources.Load("Prefabs/Panel");
         this.panelPositions.ForEach(panelPosition => {
@@ -129,7 +136,8 @@ public class StageController : MonoBehaviour {
                 {
                     this.currentState = State.clear;
 
-                    GameObject.Find("UI").GetComponent<Canvas>().enabled = true;
+                    this.showOnClear.SetActive(true);
+                    this.hideOnClear.SetActive(false);
                 }
                 else
                 {
