@@ -12,6 +12,7 @@ public class StageController : MonoBehaviour {
         clear,
     }
 
+    public int boardSize = 11;
     public Vector2 playerPosition;
     public List<Vector2> blockPositions;
     public List<Vector2> panelPositions;
@@ -71,7 +72,7 @@ public class StageController : MonoBehaviour {
         });
         // 外壁を配置
         // TODO: 整理する
-        for (var i = 0; i < 11; i++)
+        for (var i = 0; i < this.boardSize; i++)
         {
             var wallPosition = new Position(i, 0);
             var wallObject = Instantiate(wallTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
@@ -80,16 +81,16 @@ public class StageController : MonoBehaviour {
             wall.SetPosition(tmpPosition);
             this.objects.Add(wall);
         }
-        for (var i = 0; i < 11; i++)
+        for (var i = 0; i < this.boardSize; i++)
         {
-            var wallPosition = new Position(i, 10);
+            var wallPosition = new Position(i, this.boardSize-1);
             var wallObject = Instantiate(wallTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
             var tmpPosition = new Position((int)wallPosition.x, (int)wallPosition.y);
             var wall = wallObject.GetComponent<Wall>();
             wall.SetPosition(tmpPosition);
             this.objects.Add(wall);
         }
-        for (var i = 1; i < 10; i++)
+        for (var i = 1; i < this.boardSize-1; i++)
         {
             var wallPosition = new Position(0, i);
             var wallObject = Instantiate(wallTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
@@ -98,15 +99,20 @@ public class StageController : MonoBehaviour {
             wall.SetPosition(tmpPosition);
             this.objects.Add(wall);
         }
-        for (var i = 1; i < 10; i++)
+        for (var i = 1; i < this.boardSize-1; i++)
         {
-            var wallPosition = new Position(10, i);
+            var wallPosition = new Position(this.boardSize-1, i);
             var wallObject = Instantiate(wallTemplate, Vector3.zero, new Quaternion(0, 0, 0, 0));
             var tmpPosition = new Position((int)wallPosition.x, (int)wallPosition.y);
             var wall = wallObject.GetComponent<Wall>();
             wall.SetPosition(tmpPosition);
             this.objects.Add(wall);
         }
+
+        // ボードサイズに従ってカメラ位置変更
+        var camera = GameObject.Find("Main Camera");
+        var moveWorldVector = new Vector3(this.boardSize / 2.0f - 0.5f, 0, this.boardSize / 2.0f - 0.5f);
+        camera.transform.Translate(camera.transform.InverseTransformVector(moveWorldVector));
 
         UpdateArounds();
     }

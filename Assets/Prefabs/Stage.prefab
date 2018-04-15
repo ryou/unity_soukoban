@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 114752164497771306}
   - component: {fileID: 114274508152485360}
   - component: {fileID: 114607244820180664}
+  - component: {fileID: 114769273837823706}
   m_Layer: 5
   m_Name: Basic
   m_TagString: Untagged
@@ -301,13 +302,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1368386028267934}
-  m_LocalRotation: {x: 0.5735764, y: -0, z: -0, w: 0.8191521}
-  m_LocalPosition: {x: 5, y: 8, z: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4249138527829316}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4186795591620564
 Transform:
   m_ObjectHideFlags: 1
@@ -376,7 +377,7 @@ Transform:
   m_GameObject: {fileID: 1392912371530256}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5, y: 0, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 4249138527829316}
   m_RootOrder: 2
@@ -574,10 +575,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23552bf9d4530fa4b800b9e57c16084e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPosition: {x: 0, y: 0}
-  blockPositions: []
-  panelPositions: []
-  wallPositions: []
+  boardSize: 8
+  playerPosition: {x: 2, y: 1}
+  blockPositions:
+  - {x: 2, y: 5}
+  - {x: 3, y: 2}
+  - {x: 5, y: 6}
+  panelPositions:
+  - {x: 1, y: 6}
+  - {x: 1, y: 5}
+  - {x: 1, y: 4}
+  wallPositions:
+  - {x: 1, y: 3}
+  - {x: 1, y: 2}
+  - {x: 1, y: 1}
+  - {x: 2, y: 4}
+  - {x: 2, y: 3}
+  - {x: 4, y: 4}
+  - {x: 4, y: 3}
+  - {x: 5, y: 5}
 --- !u!114 &114108418184773496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -720,7 +736,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114607244820180664}
+      - m_Target: {fileID: 114769273837823706}
         m_MethodName: ToSameScene
         m_Mode: 1
         m_Arguments:
@@ -728,7 +744,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Stage_02
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -876,6 +892,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114769273837823706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1153675474086336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67e861a0f0aaa9479a9ec98f3793814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114936144239864570
 MonoBehaviour:
   m_ObjectHideFlags: 1
