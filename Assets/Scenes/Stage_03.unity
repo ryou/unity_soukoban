@@ -373,6 +373,21 @@ Prefab:
       propertyPath: wallPositions.Array.data[12].y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114060682473973240, guid: 48f746ed4cb370541b0053e253416cd5,
+        type: 2}
+      propertyPath: boardSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114060682473973240, guid: 48f746ed4cb370541b0053e253416cd5,
+        type: 2}
+      propertyPath: blockPositions.Array.data[1].y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114060682473973240, guid: 48f746ed4cb370541b0053e253416cd5,
+        type: 2}
+      propertyPath: playerPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48f746ed4cb370541b0053e253416cd5, type: 2}
   m_IsPrefabParent: 0
