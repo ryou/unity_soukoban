@@ -138,6 +138,13 @@ public class StageController : MonoBehaviour {
 
                     this.showOnClear.SetActive(true);
                     this.hideOnClear.SetActive(false);
+
+                    // プレイヤーをアップで表示
+                    GameObject.Find("Main Camera").GetComponent<Camera>().enabled = false;
+                    GameObject.Find("PlayerCamera").GetComponent<Camera>().enabled = true;
+                    this.objects.ForEach(item => {
+                        if (item is Block) item.gameObject.SetActive(false);
+                    });
                 }
                 else
                 {
