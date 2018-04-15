@@ -60,4 +60,9 @@ public class Player : BaseObject {
 
         this.animator.SetBool("Walking", false);
     }
+
+    public void Jump()
+    {
+        this.animator.SetBool("Jump", true);
+    }
 }

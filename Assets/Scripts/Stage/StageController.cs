@@ -145,6 +145,8 @@ public class StageController : MonoBehaviour {
                     this.objects.ForEach(item => {
                         if (item is Block) item.gameObject.SetActive(false);
                     });
+
+                    this.player.Jump();
                 }
                 else
                 {
